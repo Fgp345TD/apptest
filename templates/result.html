@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Результаты теста</h1>
+
+<div style="
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    margin-top: 24px;
+">
+    <!-- Оценка -->
+    <div style="
+        font-size: 72px;
+        font-weight: 700;
+        color: var(--primary);
+        margin: 20px 0;
+    ">
+        {{ grade }}
+    </div>
+
+    <!-- Баллы и процент -->
+    <div style="
+        font-size: 24px;
+        color: var(--text);
+        margin-bottom: 32px;
+    ">
+        {{ score }} из {{ total }}
+        <br>
+        <span style="font-size: 20px; color: var(--text-secondary);">
+            {{ (score / total * 100)|round(1) }}%
+        </span>
+    </div>
+
+    <!-- Кнопка -->
+    <a href="{{ url_for('index') }}" class="btn btn-primary" style="
+        padding: 16px 32px;
+        font-size: 16px;
+        font-weight: 500;
+    ">
+        ← На главную
+    </a>
+</div>
+{% endblock %}

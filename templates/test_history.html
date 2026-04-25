@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>История тестов</h1>
+
+{% if taken_test_results %}
+<style>
+.common-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: auto;
+}
+.common-table th,
+.common-table td {
+    padding: 16px 12px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+.common-table th {
+    background: rgba(30, 41, 59, 0.5);
+    font-weight: 600;
+    color: var(--text);
+    position: sticky;
+    top: 0;
+}
+.common-table tr:hover {
+    background: rgba(30, 41, 59, 0.3);
+}
+</style>
+
+<table class="common-table">
+    <thead>
+        <tr>
+            <th>Тест</th>
+            <th>Всего вопросов</th>
+            <th>Правильно</th>
+            <th>Процент</th>
+            <th>Оценка</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for result in taken_test_results %}
+        <tr>
+            <td>{{ result[0] }}</td>
+            <td>{{ result[2] }}</td>
+            <td>{{ result[1] }}</td>
+            <td>{{ (result[1] / result[2] * 100)|round(1) }}%</td>
+            <td>
+                {% set p = result[1] / result[2] * 100 %}
+                {{ '5' if p >= 90 else '4' if p >= 75 else '3' if p >= 60 else '2' }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div style="background: var(--surface); border-radius: 12px; padding: 60px 20px; text-align: center;">
+    <div style="font-size: 48px; margin-bottom: 20px; color: var(--text-secondary);">📝</div>
+    <h2>Вы ещё не прошли ни одного теста</h2>
+    <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto;">
+        Пройдите первый тест — и он появится здесь.
+    </p>
+</div>
+{% endif %}
+{% endblock %}

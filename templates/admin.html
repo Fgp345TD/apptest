@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Административная панель</h1>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 20px;">
+    <a href="{{ url_for('admin_users') }}" class="card-link" style="text-decoration:none;">
+        <div class="card" style="
+            background: var(--surface);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 24px;
+            text-align: center;
+            transition: transform 0.3s;
+        ">
+            <div style="font-size: 2.5rem; margin-bottom: 12px;">👥</div>
+            <h3>Пользователи</h3>
+            <p>Управление аккаунтами</p>
+        </div>
+    </a>
+
+    <a href="{{ url_for('admin_tests') }}" class="card-link" style="text-decoration:none;">
+        <div class="card" style="
+            background: var(--surface);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 24px;
+            text-align: center;
+            transition: transform 0.3s;
+        ">
+            <div style="font-size: 2.5rem; margin-bottom: 12px;">📝</div>
+            <h3>Тесты</h3>
+            <p>Просмотр и удаление тестов</p>
+        </div>
+    </a>
+
+    <a href="{{ url_for('admin_requests') }}" class="card-link" style="text-decoration:none;">
+        <div class="card" style="
+            background: var(--surface);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 24px;
+            text-align: center;
+            transition: transform 0.3s;
+        ">
+            <div style="font-size: 2.5rem; margin-bottom: 12px;">✅</div>
+            <h3>Запросы</h3>
+            <p>Подтверждение ролей</p>
+        </div>
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Статистика</h1>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+    <div class="card">
+        <h3>Пользователи</h3>
+        <p style="font-size: 2rem; color: var(--primary);">{{ total_users }}</p>
+    </div>
+    <div class="card">
+        <h3>Тесты</h3>
+        <p style="font-size: 2rem; color: var(--primary);">{{ total_tests }}</p>
+    </div>
+    <div class="card">
+        <h3>Попытки</h3>
+        <p style="font-size: 2rem; color: var(--primary);">{{ total_attempts }}</p>
+    </div>
+</div>
+
+<h2>Топ-5 тестов по прохождениям</h2>
+<ol>
+    {% for t in top_tests %}
+    <li>{{ t[0] }} — {{ t[1] }} раз</li>
+    {% endfor %}
+</ol>
+
+<a href="{{ url_for('admin_panel') }}" class="btn">← Назад</a>
+{% endblock %}
